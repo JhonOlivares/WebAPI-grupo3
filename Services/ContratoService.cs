@@ -55,7 +55,16 @@ namespace WebAPIGrupo3.Services
             {
                 Contrato contra = document.ConvertTo<Contrato>();
 
-                // ACTUALIZA LAS PLAZAS///////
+                int pt = vuelo.PlazasTuristas -= 1;
+                Dictionary<string, object> dicturista = new();
+                dicturista.Add("PlazasTuristas", pt);
+                await conn.UpdateGenericDocumentField("vuelos", vuelo.NumeroVuelo, dicturista);
+
+
+                int ph = hotel.PlazasHotel -= 1;
+                Dictionary<string, object> dichotel = new();
+                dichotel.Add("PlazasHotel", ph);
+                await conn.UpdateGenericDocumentField("hoteles", hotel.Id, dichotel);
 
                 return contra;
             }            

@@ -17,8 +17,20 @@ namespace WebAPIGrupo3.Services
             IList<Vuelo> lista = new List<Vuelo>();
             foreach (var document in await conn.GetCollectionAsync("vuelos"))
             {
-                Vuelo proc = document.ConvertTo<Vuelo>();
-                lista.Add(proc);
+                Vuelo _vuelo = document.ConvertTo<Vuelo>();
+                lista.Add(_vuelo);
+            }
+            return lista;
+        }
+
+        public async Task<IEnumerable<Vuelo>> GetAvailableFlights()
+        {
+            IList<Vuelo> lista = new List<Vuelo>();
+            foreach (var document in await conn.GetCollectionAsync("vuelos"))
+            {
+                Vuelo _vuelo = document.ConvertTo<Vuelo>();
+                if(_vuelo.PlazasTuristas > 0)
+                    lista.Add(_vuelo);
             }
             return lista;
         }
@@ -33,6 +45,7 @@ namespace WebAPIGrupo3.Services
     public interface IVueloService
     {
         Task<IEnumerable<Vuelo>> GetAllFlights();
+        Task<IEnumerable<Vuelo>> GetAvailableFlights();
         Task<Vuelo> GetFlight(string id);
     }
 }

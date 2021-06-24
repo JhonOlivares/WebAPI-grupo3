@@ -20,7 +20,7 @@ namespace WebAPIGrupo3.Controllers
         [HttpGet]
         public async Task<IEnumerable<Hotel>> Get()
         {
-            return await _hotelService.GetAllHotels();
+            return await _hotelService.GetAvailableHotels();
         }
 
 

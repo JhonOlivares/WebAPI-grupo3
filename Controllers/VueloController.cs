@@ -19,7 +19,7 @@ namespace WebAPIGrupo3.Controllers
         [HttpGet]
         public async Task<IEnumerable<Vuelo>> Get()
         {
-            return await _vueloService.GetAllFlights();
+            return await _vueloService.GetAvailableFlights();
         }
 
 
