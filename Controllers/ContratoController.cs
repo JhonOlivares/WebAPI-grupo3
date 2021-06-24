@@ -28,9 +28,9 @@ namespace WebAPIGrupo3.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IEnumerable<Contrato>> Get(string idTurista)
+        public async Task<IEnumerable<Contrato>> Get(string id)
         {
-            return await _contratoService.GetContratos(idTurista);
+            return await _contratoService.GetContratos(id);
         }
 
         [HttpPost]

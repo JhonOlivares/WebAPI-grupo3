@@ -22,7 +22,7 @@ namespace WebAPIGrupo3.Models
             Estancia = estancia;
         }
 
-        [FirestoreDocumentId] public string Id { get; set; }
+        [FirestoreProperty] public string Id { get; set; }
         [FirestoreProperty] public Turista Turista { get; set; }
         [FirestoreProperty] public Vuelo Vuelo { get; set; }
         [FirestoreProperty] public Sucursal Sucursal { get; set; }

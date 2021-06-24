@@ -18,7 +18,7 @@ namespace WebAPIGrupo3.Models
             Hotel = hotel;
         }
 
-        //[FirestoreDocumentId] public string Id { get; set; }
+        //[FirestoreProperty] public string Id { get; set; }
         [FirestoreProperty] public DateTimeOffset FechaEntrada { get; set; }
         [FirestoreProperty] public DateTimeOffset FechaSalida { get; set; }
         [FirestoreProperty] public Hotel Hotel { get; set; }

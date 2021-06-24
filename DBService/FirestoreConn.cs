@@ -67,8 +67,15 @@ namespace WebAPIGrupo3.DBService
                 }
                 else
                 {
-                    docRef = await db.Collection(collection).AddAsync(obj);
-                    //await docRef.Collection.add(obj);
+                    //docRef = await db.Collection(collection).AddAsync(obj);
+                    //Dictionary<string, object> dic = new Dictionary<string, object>();  
+                    //dic.Add("Id", docRef.Id);
+                    //await docRef.UpdateAsync(dic);
+                    
+                    //las siguientes 3 lineas hacen lo mismo de las 4 lineas de arriba, en este caso con una sola escritura en Firestore
+                    docRef = db.Collection(collection).Document();
+                    obj.GetType().GetProperty("Id").SetValue(obj, docRef.Id);
+                    await docRef.SetAsync(obj);
                     return await docRef.GetSnapshotAsync();// el documento se guardó correctamente con un id aleatorio
                 }
             }

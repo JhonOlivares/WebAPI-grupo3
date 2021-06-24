@@ -11,7 +11,8 @@ namespace WebAPIGrupo3.Models
 
         }
 
-        [FirestoreDocumentId] [FirestoreProperty] public string NumeroVuelo { get; set; }
+        //[FirestoreDocumentId] public string DocId { get; set; }
+        [FirestoreProperty] public string NumeroVuelo { get; set; }
         [FirestoreProperty] public DateTimeOffset FechaYHora { get; set; }
         [FirestoreProperty] public string Origen { get; set; }
         [FirestoreProperty] public string Destino { get; set; }
