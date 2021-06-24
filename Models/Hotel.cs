@@ -11,7 +11,7 @@ namespace WebAPIGrupo3.Models
 
         }
 
-        [FirestoreDocumentId] public string Id { get; set; }
+        [FirestoreDocumentId] [FirestoreProperty] public string Id { get; set; }
         [FirestoreProperty] public string NombreHotel { get; set; }
         [FirestoreProperty] public string DireccionHotel { get; set; }
         [FirestoreProperty] public string CiudadHotel { get; set; }

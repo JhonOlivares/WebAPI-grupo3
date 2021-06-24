@@ -35,8 +35,13 @@ namespace WebAPIGrupo3.Services
 
         public async Task<string> Create(Turista turista)
         {
-            string text = await conn?.UploadDocToFirestore("turistas", turista, null);
-            return text;
+            var document = await conn?.UploadDocToFirestore("turistas", turista, null);
+            if (document == null)
+                return string.Empty;
+            else
+            {
+                return document.Id;
+            }
         }
     }
     

@@ -14,18 +14,33 @@ namespace WebAPIGrupo3.Models
 
         }
 
-        public Contrato(Turista turista, Hotel vuelo, Sucursal sucursal, Estancia estancia)
+        public Contrato(Turista turista, Vuelo vuelo, Sucursal sucursal, Estancia estancia)
         {
             Turista = turista;
-            Hotel = vuelo;
+            Vuelo = vuelo;
             Sucursal = sucursal;
             Estancia = estancia;
         }
 
         [FirestoreDocumentId] public string Id { get; set; }
         [FirestoreProperty] public Turista Turista { get; set; }
-        [FirestoreProperty] public Hotel Hotel { get; set; }
+        [FirestoreProperty] public Vuelo Vuelo { get; set; }
         [FirestoreProperty] public Sucursal Sucursal { get; set; }
         [FirestoreProperty] public Estancia Estancia { get; set; }
+    }
+
+    public class ContratoAnonimo
+    {
+        public ContratoAnonimo()
+        {
+                
+        }
+
+        public string IdTurista { get; set; }
+        public string NumeroVuelo { get; set; }
+        public string IdSucursal { get; set; }
+        public string IdHotel { get; set; }
+        public DateTimeOffset FechaIda { get; set; }
+        public DateTimeOffset FechaRegreso { get; set; }
     }
 }

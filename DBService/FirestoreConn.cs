@@ -49,7 +49,7 @@ namespace WebAPIGrupo3.DBService
         //1: guardado en db
         //2: guardado con random docID;
         //3: no se guardó porque el docID ya existe en la base de datos.
-        public async Task<string> UploadDocToFirestore(string collection, object obj, string CustomID)
+        public async Task<DocumentSnapshot> UploadDocToFirestore(string collection, object obj, string CustomID)
         {
             try
             {
@@ -60,22 +60,22 @@ namespace WebAPIGrupo3.DBService
                     DocumentSnapshot snap = await docRef.GetSnapshotAsync();
                     if (snap.Exists)
                     {
-                        return snap.Id;//no se va sobreescribir el documento, porque ya existe: CustomID.
+                        return snap;//no se va sobreescribir el documento, porque ya existe: CustomID.
                     }
-                    await docRef.SetAsync(obj);
-                    return ""; ;// el documento se guardó correctamente con un id=CustomID
+                    //return await docRef.SetAsync(obj);
+                    return null; ;// el documento se guardó correctamente con un id=CustomID
                 }
                 else
                 {
                     docRef = await db.Collection(collection).AddAsync(obj);
                     //await docRef.Collection.add(obj);
-                    return docRef.Id;// el documento se guardó correctamente con un id aleatorio
+                    return await docRef.GetSnapshotAsync();// el documento se guardó correctamente con un id aleatorio
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return string.Empty;
+                return null;
             }
         }
 

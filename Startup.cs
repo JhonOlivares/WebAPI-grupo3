@@ -34,7 +34,7 @@ namespace WebAPIGrupo3
             services.AddScoped<ISucursalService, SucursalService>();
             services.AddScoped<ITuristaService, TuristaService>();
             //services.AddScoped<IEstanciaService, EstanciaService>();
-            //services.AddScoped<IContratoService, ContratoService>();
+            services.AddScoped<IContratoService, ContratoService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

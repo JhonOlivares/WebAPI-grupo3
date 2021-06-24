@@ -17,7 +17,7 @@ namespace WebAPIGrupo3.Models
             Direccion = address;
             Telefono = phone;
         }
-        [FirestoreDocumentId] public string Id { get; set; }
+        [FirestoreDocumentId] [FirestoreProperty]  public string Id { get; set; }
         [FirestoreProperty] public string Nombre { get; set; }
         [FirestoreProperty] public string Apellido { get; set; }
         [FirestoreProperty] public string Direccion { get; set; }
