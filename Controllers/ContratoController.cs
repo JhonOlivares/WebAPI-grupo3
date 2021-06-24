@@ -19,14 +19,6 @@ namespace WebAPIGrupo3.Controllers
             _contratoService = contratoService;
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<Contrato>> Get()
-        //{
-        //    return await _contratoService.GetAllContratos();
-        //}
-
-
-
         [HttpGet("{id}")]
         public async Task<IEnumerable<Contrato>> Get(string id)
         {

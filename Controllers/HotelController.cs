@@ -36,21 +36,6 @@ namespace WebAPIGrupo3.Controllers
             return hotel;
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult Get(int id)
-        //{
-        //    RPClientes rpCli = new RPClientes();
-
-        //    var cliRet = rpCli.ObtenerCliente(id);
-
-        //    if (cliRet == null)
-        //    {
-        //        var nf = NotFound("El cliente " + id.ToString() + " no existe.");
-        //        return nf;
-        //    }
-
-        //    return Ok(cliRet);
-        //}
     }
 
 }

@@ -53,7 +53,7 @@ namespace WebAPIGrupo3.Services
                 return null;
             else
             {
-                Contrato contra = document.ConvertTo<Contrato>();
+                Contrato contratofinal = document.ConvertTo<Contrato>();
 
                 int pt = vuelo.PlazasTuristas -= 1;
                 Dictionary<string, object> dicturista = new();
@@ -66,15 +66,9 @@ namespace WebAPIGrupo3.Services
                 dichotel.Add("PlazasHotel", ph);
                 await conn.UpdateGenericDocumentField("hoteles", hotel.Id, dichotel);
 
-                return contra;
+                return contratofinal;
             }            
 
-            //List<Vuelo> vuelos = (List<Vuelo>)await vuelosService.GetAllFlights();
-            //vuelos = vuelos.Where(v => v.Destino.IndexOf("rata", StringComparison.OrdinalIgnoreCase) != -1).ToList();
-            //vuelos = vuelos.Where(v => v.FechaYHora.Equals(contratoA.FechaIda)).ToList();
-            //string rata = "";
-            //return await Task.FromResult(new Contrato());
-            //77else return new Contrato();
         }
 
         public async Task<IEnumerable<Contrato>> GetContratos(string idTurista)

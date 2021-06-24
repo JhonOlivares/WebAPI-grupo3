@@ -57,8 +57,5 @@ namespace WebAPIGrupo3.Services
         Task<IEnumerable<Hotel>> GetAllHotels();
         Task<IEnumerable<Hotel>> GetAvailableHotels();
         Task<Hotel> GetHotel(string id);
-        //Task<Book> Create(Book book);
-        //Task Update(Book book);
-        //Task Delete(int id);
     }
 }
