@@ -22,8 +22,8 @@ namespace WebAPIGrupo3.Services
                 string.IsNullOrEmpty(jsonObject.IdTurista.Trim()) ||
                 string.IsNullOrEmpty(jsonObject.IdSucursal.Trim()) ||
                 string.IsNullOrEmpty(jsonObject.NumeroVuelo.Trim()) ||
-                jsonObject.FechaIda.Equals(null) ||
-                jsonObject.FechaRegreso.Equals(null))
+                jsonObject.FechaEntrada.Equals(null) ||
+                jsonObject.FechaSalida.Equals(null))
                 return null;
 
             Vuelo vuelo = await vuelosService.GetFlight(jsonObject.NumeroVuelo);
@@ -40,10 +40,8 @@ namespace WebAPIGrupo3.Services
             if (!vuelo.Destino.Equals(hotel.CiudadHotel, StringComparison.OrdinalIgnoreCase))
                 return null;
 
-            if (!vuelo.FechaYHora.Date.Equals(jsonObject.FechaIda.Date))
-                return null;
-
-            Estancia estancia = new(jsonObject.FechaIda, jsonObject.FechaRegreso, hotel);
+            
+            Estancia estancia = new(jsonObject.FechaEntrada, jsonObject.FechaSalida, hotel);
                        
 
             Contrato contrato = new (turista, vuelo, sucursal, estancia);

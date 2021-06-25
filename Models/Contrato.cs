@@ -40,7 +40,7 @@ namespace WebAPIGrupo3.Models
         public string NumeroVuelo { get; set; }
         public string IdSucursal { get; set; }
         public string IdHotel { get; set; }
-        public DateTimeOffset FechaIda { get; set; }
-        public DateTimeOffset FechaRegreso { get; set; }
+        public DateTimeOffset FechaEntrada { get; set; }
+        public DateTimeOffset FechaSalida { get; set; }
     }
 }
