@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using WebAPIGrupo3.DBService;
 using WebAPIGrupo3.Models;
+using System;
 
 namespace WebAPIGrupo3.Services
 {
@@ -36,6 +37,18 @@ namespace WebAPIGrupo3.Services
             return lista;
         }
 
+        public async Task<IEnumerable<Hotel>> GetAvailableHotelsByCity(string city)
+        {
+            IList<Hotel> lista = new List<Hotel>();
+            foreach (var document in await conn.GetCollectionAsync("hoteles"))
+            {
+                Hotel hot = document.ConvertTo<Hotel>();
+                if (hot.PlazasHotel > 0 && hot.CiudadHotel.IndexOf(city, StringComparison.OrdinalIgnoreCase) != -1)
+                    lista.Add(hot);
+            }
+            return lista;
+        }
+
         public async Task<Hotel> GetHotel(string id)
         {
             var document = await conn.GetSingleDocumentAsync("hoteles", id);
@@ -56,6 +69,7 @@ namespace WebAPIGrupo3.Services
     {
         Task<IEnumerable<Hotel>> GetAllHotels();
         Task<IEnumerable<Hotel>> GetAvailableHotels();
+        Task<IEnumerable<Hotel>> GetAvailableHotelsByCity(string city);
         Task<Hotel> GetHotel(string id);
     }
 }

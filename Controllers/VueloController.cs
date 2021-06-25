@@ -34,5 +34,27 @@ namespace WebAPIGrupo3.Controllers
             }
             return vuelo;
         }
+
+
+        [HttpGet("origen/{origen}")]
+        public async Task<ActionResult<Vuelo>> Getpororigen(string origen)
+        {
+            if (string.IsNullOrEmpty(origen?.Trim()))
+                return BadRequest("400");
+
+            List<Vuelo> vuelos = (List<Vuelo>)await _vueloService.GetAvailableFlightsByOrigin(origen);
+            return Ok(vuelos);
+        }
+
+
+        [HttpGet("por-origen")]
+        public async Task<ActionResult> GetByOrigin([FromBody] Vuelo vuelo)
+        {
+            if (string.IsNullOrEmpty(vuelo.Origen?.Trim()))
+                return BadRequest("400");
+
+            List<Vuelo> vuelos = (List<Vuelo>)await _vueloService.GetAvailableFlightsByOrigin(vuelo.Origen);
+            return Ok(vuelos);
+        }
     }
 }

@@ -55,13 +55,13 @@ namespace WebAPIGrupo3.Services
             {
                 Contrato contratofinal = document.ConvertTo<Contrato>();
 
-                int pt = vuelo.PlazasTuristas -= 1;
+                int pt = vuelo.PlazasTuristas - 1;
                 Dictionary<string, object> dicturista = new();
                 dicturista.Add("PlazasTuristas", pt);
                 await conn.UpdateGenericDocumentField("vuelos", vuelo.NumeroVuelo, dicturista);
 
 
-                int ph = hotel.PlazasHotel -= 1;
+                int ph = hotel.PlazasHotel - 1;
                 Dictionary<string, object> dichotel = new();
                 dichotel.Add("PlazasHotel", ph);
                 await conn.UpdateGenericDocumentField("hoteles", hotel.Id, dichotel);
