@@ -40,7 +40,7 @@ namespace WebAPIGrupo3.Controllers
         {
             string text = await _turistaService.Create(turista);
             if (string.IsNullOrEmpty(text))
-                return NotFound("400");
+                return BadRequest("400");
             else
                 return Created("path", new { id = text });
         }

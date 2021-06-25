@@ -35,6 +35,9 @@ namespace WebAPIGrupo3.Services
 
         public async Task<string> Create(Turista turista)
         {
+            if (string.IsNullOrEmpty(turista.Nombre?.Trim()) || string.IsNullOrEmpty(turista.Nombre?.Trim()))
+                return string.Empty;
+
             var document = await conn?.UploadDocToFirestore("turistas", turista, null);
             if (document == null)
                 return string.Empty;
